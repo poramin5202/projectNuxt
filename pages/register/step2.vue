@@ -22,6 +22,11 @@
                          dense
                          label="name"> 
                     </v-text-field>
+                    <v-text-field 
+                         v-model="form.phone"
+                         dense
+                         label="phoneNumber"> 
+                    </v-text-field>
                     </v-form>
                 </v-col>
          </v-row>
