@@ -1,0 +1,12 @@
+<template>
+    <div>
+        <v-app-bar
+      color="primary"
+      dense
+      flat
+      dark
+    >
+    <v-toolbar-title>ตรวจสอบเงื่อนไข</v-toolbar-title>
+        </v-app-bar>
+        </div>
+ </template>

@@ -30,7 +30,7 @@
           outlined
           name="input-7-4"
           label="เงื่อนไขการใช้บริการจองคิว"
-          value="- มัดจำ100 - ไม่มายึดเงิน - อ่านและกดยอมรับเงื่อนไข" >
+          value="- มัดจำ100 - ไม่มายึดเงิน - อ่านและกดยอมรับเงื่อนไข ขอกลุ่มผมผ่านเถอะครับจาร Gread A +" >
               </v-textarea>
         </v-col>
       <v-col cols="12" >
@@ -74,7 +74,7 @@ export default {
                         this.$store.dispatch('setLine',profile);
                     })
                 }else{
-                    liff.login();
+                   // liff.login();
                 }
             })
         }, 
@@ -87,7 +87,6 @@ export default {
         return {
           
             dialog:false,
-
             form: {
                 bt:false
             }
@@ -105,7 +104,7 @@ export default {
             if(this.form.bt==false){
                 this.dialog=true
             }
-        }
+        },
     }
 }
 

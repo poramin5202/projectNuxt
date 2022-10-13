@@ -20,15 +20,64 @@
                          <v-text-field 
                          v-model="form.name"
                          dense
-                         label="name"> 
+                         label="Name"> 
                     </v-text-field>
                     <v-text-field 
-                         v-model="form.phone"
+                         v-model="form.phoneNumber"
                          dense
                          label="phoneNumber"> 
                     </v-text-field>
+
+                    <v-dialog
+                        ref="dialog"
+                        v-model="modal"
+                        :return-value.sync="date"
+                        persistent
+                        width="290px"
+                    >
+                        <template v-slot:activator="{ on, attrs }">
+                        <v-text-field
+                            v-model="date"
+                            label="Picker in dialog"
+                            prepend-icon="mdi-calendar"
+                            readonly
+                            v-bind="attrs"
+                            v-on="on"
+                            class="dateIcon"
+                        ></v-text-field>
+                        </template>
+                        <v-date-picker
+                        v-model="date"
+                        scrollable
+                        >
+                        <v-spacer></v-spacer>
+                        <v-btn
+                            text
+                            color="primary"
+                            @click="modal = false"
+                        >
+                            Cancel
+                        </v-btn>
+                        <v-btn
+                            text
+                            color="primary"
+                            @click="$refs.dialog.save(date)"
+                        >
+                            OK
+                        </v-btn>
+                        </v-date-picker>
+      </v-dialog>
+
+                   
+                   
+
+                    <v-btn class="w100 my-btn mt-5 " width="100%" rounded color="primary" dark  @click="next">    Next </v-btn>
                     </v-form>
+                
                 </v-col>
+
+
+                
          </v-row>
         </v-container>
     </div>
@@ -38,11 +87,26 @@
 export default {
     data(){
         return {
-            form: {
+          form: {
                 name: '',
-                
-            }
+                phoneNumber:'',
+                date:''         
+            },
+            date: new Date().toISOString().substring(0,10),
+            modal: false,
         }
-    }
+    },
+    methods: {
+     next() {
+         
+            this.$store.dispatch('setHair', this.form)
+             this.$router.push("/register/success");
+         
+         if(this.form.bt==false){
+             this.dialog=true
+         }
+     }
+ }
 }
 </script>
+
