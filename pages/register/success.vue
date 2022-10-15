@@ -6,7 +6,7 @@
       flat
       dark
     >
-    <v-toolbar-title>ตรวจสอบเงื่อนไข</v-toolbar-title>
+    <v-toolbar-title>สรุป</v-toolbar-title>
         </v-app-bar>
         </div>
  </template>

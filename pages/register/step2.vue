@@ -1,5 +1,5 @@
 <template>
-    <div>
+<div>
         <v-app-bar
       color="primary"
       dense
@@ -31,14 +31,13 @@
                     <v-dialog
                         ref="dialog"
                         v-model="modal"
-                        :return-value.sync="date"
                         persistent
                         width="290px"
                     >
                         <template v-slot:activator="{ on, attrs }">
                         <v-text-field
-                            v-model="date"
-                            label="Picker in dialog"
+                            v-model="form.date"
+                            label="Choose a booking date"
                             prepend-icon="mdi-calendar"
                             readonly
                             v-bind="attrs"
@@ -47,7 +46,8 @@
                         ></v-text-field>
                         </template>
                         <v-date-picker
-                        v-model="date"
+                        :min="new Date().toISOString().substring(0,10)"
+                        v-model="form.date"
                         scrollable
                         >
                         <v-spacer></v-spacer>
@@ -90,9 +90,8 @@ export default {
           form: {
                 name: '',
                 phoneNumber:'',
-                date:''         
+                date:new Date().toISOString().substring(0,10)        
             },
-            date: new Date().toISOString().substring(0,10),
             modal: false,
         }
     },
