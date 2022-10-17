@@ -12,7 +12,7 @@
             <v-row>
                 <v-col cols="12" >
                     <div class="mt-8 text-primary text-title text-center">
-                    Step 2 to 2
+                    Step 2 to 4
                       </div>
                 </v-col>
                 <v-col cols="12">

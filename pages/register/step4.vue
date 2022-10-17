@@ -6,10 +6,15 @@
       flat
       dark
     >
-    <v-toolbar-title>สรุป</v-toolbar-title>
+    <v-toolbar-title>Success :)</v-toolbar-title>
         </v-app-bar>
         <v-container class="pt-0 pb-0">
           <v-row>
+            <v-col cols="12" >
+                    <div class="mt-8 text-primary text-title text-center">
+                    Step 4 to 4
+                      </div>
+                </v-col>
             <v-col cols="12">
               <h3>จองเวลา {{ date }} <br> </h3>
               <h3>จองเวลา {{ time }} <br> </h3>
