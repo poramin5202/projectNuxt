@@ -9,7 +9,8 @@ export const state = () => ({
  dataHair: {
     name:null,
     phoneNumber:null,
-    date:null
+    date:null,
+    perple:null
  }
 })
 //------------------------------------------
