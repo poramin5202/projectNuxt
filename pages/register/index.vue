@@ -26,6 +26,7 @@
                 </v-col>
         <v-col cols="12"  md="6" class="pt-0 pb-0">
              <v-textarea 
+             readonly
           dense
           outlined
           name="input-7-4"
