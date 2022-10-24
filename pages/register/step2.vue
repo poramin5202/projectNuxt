@@ -20,11 +20,15 @@
                          <v-text-field 
                          v-model="form.name"
                          dense
+                         required
+                         :rules="nameRules"
                          label="Name"> 
                     </v-text-field>
                     <v-text-field 
                          v-model="form.phoneNumber"
                          dense
+                         :rules="phoneRules"
+                         @keypress="onlyNumber($event,10)"
                          label="phoneNumber"> 
                     </v-text-field>
 
@@ -117,6 +121,8 @@
 </template>
 
 <script>
+const REGEX_PHONE = /^[0]([0-9]{9})*$/
+const REGEX_NUMBER = /^[0-9]*$/
 export default {
     computed: {
         getBt(){
@@ -140,9 +146,36 @@ export default {
             states: [ 'jom','att','poramin'],
             time: [ '10.00','10.30','11.00','11.30','12.00','12.30',
             '13.00','13.30','14.00','14.30','15.00','15.30','16.00','16.30',],
+            nameRules:[ value => this.nameValidator(value) ],
+            phoneRules:[value => this.phoneValidator(value)]
               }
     },
     methods: {
+        nameValidator(value){
+            if(value == ''){
+                return 'กรุณากรอกชื่อที่ใช้จองคิว'
+            }
+            
+        },
+        phoneValidator(value){
+            if(REGEX_PHONE.test(value)){
+                return true 
+            }
+            if(value == ''){
+                return 'กรุณากรอกเบอร์โทรติดต่อ'
+            }
+            return "กรุณากรอกเบอร์โทรให้ถูกต้อง"
+        },
+        onlyNumber(event,max){
+            if(event.target.value.length == 0){
+                if(event.key != 0) {
+                    return event.preventDefault()
+                }
+            }
+            if(!REGEX_NUMBER.test(event.key) || event.target.value.length == max){
+                return event.preventDefault()
+            }
+        },
      next() {
          
             this.$store.dispatch('setHair', this.form)
