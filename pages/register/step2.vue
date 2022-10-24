@@ -21,6 +21,7 @@
                          v-model="form.name"
                          dense
                          required
+                         prepend-icon="mdi-account"
                          :rules="nameRules"
                          label="Name"> 
                     </v-text-field>
@@ -28,6 +29,7 @@
                          v-model="form.phoneNumber"
                          dense
                          :rules="phoneRules"
+                         prepend-icon="mdi-phone"
                          @keypress="onlyNumber($event,10)"
                          label="phoneNumber"> 
                     </v-text-field>
@@ -80,7 +82,7 @@
                                 menu-props="auto"
                                 label="เลือกช่าง"
                                 hide-details
-                                prepend-icon="mdi-account"
+                                prepend-icon="mdi-account-filter"
                                 single-line
                                 class="pt-0 pl-0 mt-0"
                             ></v-select>
