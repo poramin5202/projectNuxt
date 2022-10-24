@@ -136,7 +136,7 @@ export default {
         getBt(){
            return this.$store.getters.getBt;
         },
-        getHair(){
+        getDatahair(){
            return this.$store.getters.getHair;
         }
     },
@@ -193,7 +193,7 @@ export default {
          if(this.form.bt==false || this.form.name == "" || this.form.date == "" || this.form.perple == "" || this.form.time == "" || this.form.phoneNumber.length !=10 || this.bt == false){
              this.dialog=true
          }else{
-                   this.$store.dispatch('Datahair', this.form)
+                   this.$store.dispatch('setDatahair', this.form)
                    this.$router.push("/register/step3");
          }
 

@@ -23,7 +23,7 @@ export const getters = {
 getLine(state){
     return state.line
  },
- getHair(state){
+ getDatahair(state){
     return state.dataHair
  },
  getBt(state){
