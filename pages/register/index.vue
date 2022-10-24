@@ -100,6 +100,7 @@ export default {
         },
         next() {
             if (this.form.bt==true) {
+                this.$store.dispatch('setbt',this.form)
                 this.$router.push("/register/step2");
             }
             if(this.form.bt==false){

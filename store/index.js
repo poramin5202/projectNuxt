@@ -10,7 +10,12 @@ export const state = () => ({
     name:null,
     phoneNumber:null,
     date:null,
-    perple:null
+    perple:null,
+    time:null,
+    etc:null  
+ },
+ bt:{
+    bt:false
  }
 })
 //------------------------------------------
@@ -20,6 +25,9 @@ getLine(state){
  },
  getHair(state){
     return state.dataHair
+ },
+ getBt(state){
+    return state.bt
  }
 }
 //------------------------------------------
@@ -35,6 +43,12 @@ export const mutations = {
             ...state.dataHair,
             ...data
         }
+    },
+    SET_BT(state,data){
+        state.bt = {
+            ...state.bt,
+            ...data
+        }
     }
 }
 //------------------------------------------
@@ -44,5 +58,8 @@ export const actions = {
     },
     setHair({ commit},data){
         commit('SET_DATAHAIR',data)
+    },
+    setbt({ commit},data){
+        commit('SET_BT',data)
     }
 }

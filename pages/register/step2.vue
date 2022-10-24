@@ -84,7 +84,7 @@
 
                             <v-col cols="12" class="pt-0 pl-0 mt-0">
                             <v-select
-                                v-model="form.perple"
+                                v-model="form.time"
                                 :items="time"
                                 menu-props="auto"
                                 label="เลือกเวลา"
@@ -93,6 +93,16 @@
                                 single-line
                                 class="pt-0 pl-0 mt-0"
                             ></v-select>
+                            </v-col>
+                            <v-col cols="12"  md="6" class="pt-0 pb-0">
+                                <v-textarea 
+                                v-model="form.etc"
+                            dense
+                            outlined
+                            name="input-7-4"
+                            label="รายละเอียดอื่นๆถึงช่าง"
+                            value="- มัดจำ100 - ไม่มายึดเงิน - อ่านและกดยอมรับเงื่อนไข  Gread A +  (รอเขียนเพิ่ม)" >
+                                </v-textarea>
                             </v-col>
                     <v-btn class="w100 my-btn mt-5 " width="100%" rounded color="primary" dark  @click="next">    Next </v-btn>
                     </v-form>
@@ -108,6 +118,14 @@
 
 <script>
 export default {
+    computed: {
+        getBt(){
+           return this.$store.getters.getBt;
+        },
+        getHair(){
+           return this.$store.getters.getHair;
+        }
+    },
     data(){
         return {
           form: {
@@ -115,7 +133,8 @@ export default {
                 phoneNumber:'',
                 date:'',  
                 perple:'',
-                time:''      
+                time:'',
+                etc:''      
             },
             modal: false,
             states: [ 'jom','att','poramin'],
