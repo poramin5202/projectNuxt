@@ -1,18 +1,18 @@
 //------------------------------------------
 export const state = () => ({
  line: {
-    pictureUrl: null,
-    displayName: null,
-    userId:null,
+    pictureUrl: '',
+    displayName: '',
+    userId:'',
     //email:null
  },
  dataHair: {
-    name:null,
-    phoneNumber:null,
-    date:null,
-    perple:null,
-    time:null,
-    etc:null  
+    name:'',
+    phoneNumber:'',
+    date:'',
+    perple:'',
+    time:'',
+    etc:''  
  },
  bt:{
     bt:false
@@ -56,7 +56,7 @@ export const actions = {
     setLine({ commit},data){
         commit('SET_LINE',data)
     },
-    setHair({ commit},data){
+    setDatahair({ commit},data){
         commit('SET_DATAHAIR',data)
     },
     setbt({ commit},data){

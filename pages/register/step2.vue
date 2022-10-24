@@ -117,6 +117,14 @@
                 
          </v-row>
         </v-container>
+        <v-dialog v-model="dialog" max-width="290">
+      <v-card>
+        <v-card-title>Form Error</v-card-title>
+              <v-card-text>
+                <h3>   กรุณาใส่ข้อมูลให้ครบ</h3>
+             </v-card-text>
+      </v-card>
+    </v-dialog>
     </div>
 </template>
 
@@ -147,7 +155,8 @@ export default {
             time: [ '10.00','10.30','11.00','11.30','12.00','12.30',
             '13.00','13.30','14.00','14.30','15.00','15.30','16.00','16.30',],
             nameRules:[ value => this.nameValidator(value) ],
-            phoneRules:[value => this.phoneValidator(value)]
+            phoneRules:[value => this.phoneValidator(value)],
+            dialog:false,
               }
     },
     methods: {
@@ -158,7 +167,7 @@ export default {
             
         },
         phoneValidator(value){
-            if(REGEX_PHONE.test(value)){
+            if(REGEX_PHONE.test(value) && value.length == 10){
                 return true 
             }
             if(value == ''){
@@ -178,12 +187,16 @@ export default {
         },
      next() {
          
-            this.$store.dispatch('setHair', this.form)
-             this.$router.push("/register/step3");
+       // this.$store.dispatch('Datahair', this.form)
+                //   this.$router.push("/register/step3");
          
-         if(this.form.bt==false){
+         if(this.form.bt==false || this.form.name == "" || this.form.date == "" || this.form.perple == "" || this.form.time == "" || this.form.phoneNumber.length !=10 || this.bt == false){
              this.dialog=true
+         }else{
+                   this.$store.dispatch('Datahair', this.form)
+                   this.$router.push("/register/step3");
          }
+
               },
      //   allowedDates: val => { if( (new Date(val).toString().substring(0,3) != "Sun") && ( new Date(val).toString().substring(0,3) != "Sat" )) { return true } } 
              
