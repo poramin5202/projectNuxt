@@ -51,7 +51,11 @@
 
             </v-row>
         </v-container>
-    <v-dialog v-model="dialog" max-width="290">
+    <v-dialog 
+    v-model="dialog" 
+    max-width="290"
+    transition="dialog-bottom-transition"
+    dark>
       <v-card>
         <v-card-title>Form Error</v-card-title>
               <v-card-text>

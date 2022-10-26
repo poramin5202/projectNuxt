@@ -39,6 +39,7 @@
                         v-model="modal"
                         persistent
                         width="290px"
+                        class="bg-danger"
                     >
                         <template v-slot:activator="{ on, attrs }">
                         <v-text-field
@@ -112,7 +113,6 @@
                             </v-col>
                     <v-btn class="w100 my-btn mt-5 " width="100%" rounded color="primary" dark  @click="next">    Next </v-btn>
                     </v-form>
-                
                 </v-col>
 
 
@@ -133,6 +133,7 @@
 <script>
 const REGEX_PHONE = /^[0]([0-9]{9})*$/
 const REGEX_NUMBER = /^[0-9]*$/
+let day = ['Sun'];
 export default {
     computed: {
         getBt(){
@@ -145,12 +146,13 @@ export default {
     data(){
         return {
           form: {
-                name: '',
+                name:'',
                 phoneNumber:'',
                 date:'',  
                 perple:'',
                 time:'',
-                etc:''      
+                etc:'' ,
+                stopp:'Sun'     
             },
             modal: false,
             states: [ 'jom','att','poramin'],
@@ -159,7 +161,17 @@ export default {
             nameRules:[ value => this.nameValidator(value) ],
             phoneRules:[value => this.phoneValidator(value)],
             dialog:false,
-              }
+            
+            stopday:{
+                    Sun:'Sun',
+                    Mon:'Mon',
+                    Tue:'Tue',
+                    Wed:'Wed',
+                    Thu:'Thu',
+                    Fri:'Fri',
+                    Sat:'Sat',
+            },
+                 }
     },
     methods: {
         nameValidator(value){
@@ -200,8 +212,21 @@ export default {
          }
 
               },
-     //   allowedDates: val => { if( (new Date(val).toString().substring(0,3) != "Sun") && ( new Date(val).toString().substring(0,3) != "Sat" )) { return true } } 
-             
+        //allowedDates: val => { if( (  ( new Date(val).toString().substring(0,3)) != "Sun") && ( new Date(val).toString().substring(0,3) != "Sat" )) { return true } } 
+        allowedDates(val) {
+            if( (   new Date(val).toString().substring(0,3) != this.stopday.Sun) 
+            && ( new Date(val).toString().substring(0,3) != this.stopday.Sun )
+            && ( new Date(val).toString().substring(0,3) != this.stopday.Sun )
+            && ( new Date(val).toString().substring(0,3) != this.stopday.Sun )
+            && ( new Date(val).toString().substring(0,3) != this.stopday.Sun )
+            && ( new Date(val).toString().substring(0,3) != this.stopday.Sun )
+            && ( new Date(val).toString().substring(0,3) != this.stopday.Sun )
+            )
+            
+            {
+                return true
+            }else{ return false }
+        }    
       
  },
  
