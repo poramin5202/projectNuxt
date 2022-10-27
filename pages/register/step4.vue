@@ -18,7 +18,6 @@
             <v-col cols="12">
               <h3>จองเวลา {{ date }} <br> </h3>
               <h3>จองเวลา {{ time }} <br> </h3>
-              <h3>จองเวลา {{ min }} <br> </h3>
               <h3>นาที่ {{ minute }} <br> </h3>
               <h3>ชม {{ hour }} <br> </h3>
               <h3>ชม {{ summinute }} <br> </h3>

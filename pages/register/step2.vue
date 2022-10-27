@@ -131,6 +131,8 @@
 </template>
 
 <script>
+import { get } from 'http';
+
 const REGEX_PHONE = /^[0]([0-9]{9})*$/
 const REGEX_NUMBER = /^[0-9]*$/
 let day = ['Sun'];
@@ -146,13 +148,12 @@ export default {
     data(){
         return {
           form: {
-                name:'',
-                phoneNumber:'',
-                date:'',  
-                perple:'',
-                time:'',
-                etc:'' ,
-                stopp:'Sun'     
+                name:this.$store.getters.getDatahair.name,
+                phoneNumber:this.$store.getters.getDatahair.phoneNumber,
+                date:this.$store.getters.getDatahair.date,  
+                perple:this.$store.getters.getDatahair.perple,
+                time:this.$store.getters.getDatahair.time,
+                etc:this.$store.getters.getDatahair.etc ,    
             },
             modal: false,
             states: [ 'jom','att','poramin'],
@@ -204,7 +205,7 @@ export default {
        // this.$store.dispatch('Datahair', this.form)
                 //   this.$router.push("/register/step3");
          
-         if(this.form.bt==false || this.form.name == "" || this.form.date == "" || this.form.perple == "" || this.form.time == "" || this.form.phoneNumber.length !=10 || this.bt == false){
+         if(this.form.bt==false || this.form.name == "" || this.form.date == "" || this.form.perple == "" || this.form.time == "" || this.form.phoneNumber.length !=10 || this.$store.getters.getBt.bt == false){
              this.dialog=true
          }else{
                    this.$store.dispatch('setDatahair', this.form)
@@ -226,7 +227,8 @@ export default {
             {
                 return true
             }else{ return false }
-        }    
+        },
+        
       
  },
  

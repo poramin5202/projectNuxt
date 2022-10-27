@@ -21,18 +21,22 @@
                   <v-textarea
                     outlined
                     readonly
+                    height="220"
+                    success
                     name="input-7-4"
                     label="สรุปรายละเลียด"
                     :value = " 'ชื่อในการจอง : '+getDatahair.name+ 
                       '\nเบอร์ติดต่อ     : '+getDatahair.phoneNumber+
                       '\nวันที่จองคิว     : '+getDatahair.date+
                       '\nช่างที่เลือก      : '+getDatahair.perple+
-                      '\nเวลาจอง         : '+getDatahair.time
+                      '\nเวลาจอง         : '+getDatahair.time+
+                      '\nเพิ่มเติมถึงช่าง : '+getDatahair.etc
                       "
                 ></v-textarea>
                 </v-col>
             <v-col cols="12">
-             {{getDatahair.name}}    
+              <v-btn class="w100 my-btn mt-5 " width="100%" rounded color="primary" dark  @click="next">    Next </v-btn>  
+              <v-btn class="w100 my-btn mt-5" width="100%" rounded color="#C0F0F0"   @click="back">    Back </v-btn>
             </v-col>
 
           </v-row>
@@ -57,14 +61,18 @@ computed: {
   methods:{
     next() {
            
-           if(this.form.bt==false || this.form.name == "" || this.form.date == "" || this.form.perple == "" || this.form.time == "" || this.form.phoneNumber.length !=10 || this.bt == false){
+           if( this.$store.getters.getBt.bt == false){
                this.dialog=true
            }else{
-                     this.$store.dispatch('setDatahair', this.form)
-                     this.$router.push("/register/step4");
+                       this.$router.push("/register/step4");
+           }
+  
+                },
+    back() {
+               this.$router.push("/register/step2");
            }
   
                 },
   }
-}
+
 </script>
