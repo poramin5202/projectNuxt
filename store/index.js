@@ -16,6 +16,15 @@ export const state = () => ({
  },
  bt:{
     bt:false
+ },
+ time:{
+    date: '',
+    time: '',
+    minute:'',
+    min:'',
+    hour:'',
+    hor:'',
+    summinute:''
  }
 })
 //------------------------------------------
@@ -28,6 +37,9 @@ getLine(state){
  },
  getBt(state){
     return state.bt
+ },
+ getTime(state){
+    return state.time
  }
 }
 //------------------------------------------
@@ -49,6 +61,12 @@ export const mutations = {
             ...state.bt,
             ...data
         }
+    },
+    SET_TIME(state,data){
+        state.time = {
+            ...state.time,
+            ...data
+        }
     }
 }
 //------------------------------------------
@@ -61,5 +79,8 @@ export const actions = {
     },
     setbt({ commit},data){
         commit('SET_BT',data)
+    },
+    setTime({ commit},data){
+        commit('SET_TIME',data)
     }
 }

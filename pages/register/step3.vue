@@ -64,14 +64,13 @@ computed: {
            if( this.$store.getters.getBt.bt == false){
                this.dialog=true
            }else{
-                       this.$router.push("/register/step4");
+                       this.$router.push("/register/verify");
            }
   
                 },
     back() {
                this.$router.push("/register/step2");
            }
-  
                 },
   }
 
