@@ -59,6 +59,7 @@
     </v-col>
   </v-footer>
         </div>
+        {{sentdata()}}
         </div>
  </template>
 
@@ -72,6 +73,15 @@ export default {
            return this.$store.getters.getTime;
         }
     },
+    methods: {
+      sentdata(){
+        this.$axios.patch(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/userLineliff/${this.$store.getters.getLine.userId}/data.json`, this.$store.getters.getLine)
+           this.$axios.patch(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/userLineliff/${this.$store.getters.getLine.userId}/data.json`, this.$store.getters.getTime)
+           this.$axios.patch(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/userLineliff/${this.$store.getters.getLine.userId}/data.json`, this.$store.getters.getDatahair)
+           
+      }
+
+    }
     
 };
 </script>
