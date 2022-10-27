@@ -49,6 +49,11 @@
            </v-col>
           </v-row>
         </v-container>
+
+        <div>
+          {{settime()}}
+        </div>
+
         <div class="mb-0 mt-10">
             <v-footer padless>
     <v-col
@@ -87,6 +92,9 @@ export default {
         }
     },
     methods: {
+      settime(){
+        this.$store.dispatch('setTime', this.form)
+      },
       printDate: function () {
         return new Date().toLocaleDateString();
       },
