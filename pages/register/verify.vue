@@ -27,12 +27,6 @@ export default {
         return new Date().toLocaleTimeString();
       },
       next() {
-        for(i=0; i<12 ||this.form.summinute > 0;i++){
-          if(this.form.dateEnd != '') {
-           this.$store.dispatch('setTime', this.form)
-           this.$router.push("/register/step4")
-           }
-          }
 
            if(this.form.dateEnd != '') {
            this.$store.dispatch('setTime', this.form)
