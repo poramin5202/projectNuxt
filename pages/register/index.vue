@@ -16,9 +16,15 @@
                 </div>
                 </v-col>
                 <v-col cols="12" class="text-center">
-                   
-                    <img v-if="getLine.pictureUrl == ''" src="~/assets/bar.png" alt="" width="155">
-                    <img v-else :src="getLine.pictureUrl" alt="" width="155">
+                    <v-avatar
+                    size="150"
+                    center
+                  >
+                  <img
+                  :src="getLine.pictureUrl" 
+                    >
+                  </v-avatar>
+                    
                 </v-col>
                 <v-col class="text-center">
                    <h3 class="text-primary">สวัสดีคุณ</h3> 
