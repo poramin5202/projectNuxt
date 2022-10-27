@@ -1,7 +1,10 @@
 <template>
     <div>
       รอสักครู่
-              {{next()}}
+      5555 <br>
+            {{this.form.dateEnd}}
+            <br>
+            {{form.summinute}}
               
     </div>
                 </template>
