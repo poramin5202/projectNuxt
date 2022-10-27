@@ -41,8 +41,8 @@
                     name="input-7-4"
                     label="รายละเอียดอื่นๆหลังการจองคิว"
                     :value = " 
-                    'จองคิวเสร็จสิ้นวันที่ : '+getTime.dateEnd+ 
-                    '\nจองคิวเสร็จสิ้นเวลา : '+getTime.timeEnd+
+                    'จองคิวเสร็จสิ้นวันที่ : '+$store.getters.getTime.dateEnd+ 
+                    '\nจองคิวเสร็จสิ้นเวลา : '+$store.getters.getTime.timeEnd+
                     '\n(ยกเลิก หรือ เปลี่ยนเวลา ได้ตามเงื่อนไขที่กำหนด) '
                       "
                 ></v-textarea>
@@ -87,9 +87,7 @@ export default {
         getLine(){
            return this.$store.getters.getLine;
         },
-        getTime(){
-           return this.$store.getters.getTime;
-        }
+        
     },
     methods: {
       settime(){
