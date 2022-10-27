@@ -83,7 +83,7 @@ computed: {
            if( this.$store.getters.getBt.bt == false){
                this.dialog=true
            }else{
-
+            this.$store.dispatch('setTime', this.form)
            this.$router.push("/register/step4");
            }
   
