@@ -8,8 +8,8 @@ export default {
     data() {
         return{
             form:{
-      date: '',
-      time: '',
+      dateEnd: '',
+      timeEnd: '',
       minute:'',
       min:'',
       hour:'',
@@ -28,7 +28,12 @@ export default {
       next() {
           if(this.form.summinute != '0'){
            this.$store.dispatch('setTime', this.form)
-         this.$router.push("/register/step4");
+           this.$axios.patch(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/user/${this.$store.getters.getLine.userId}/data.json`, this.$store.getters.getLine)
+           this.$axios.patch(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/user/${this.$store.getters.getLine.userId}/data.json`, this.$store.getters.getTime)
+           this.$axios.patch(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/user/${this.$store.getters.getLine.userId}/data.json`, this.$store.getters.getDatahair).then((res) => {
+            this.$router.push("/register/step4")
+           })
+         
         }else{
             this.$router.push("/register/verify");
         }
@@ -36,11 +41,11 @@ export default {
        
     },
     mounted: function () {
-      this.form.date = this.printDate();
-      this.form.time = this.printTime();
-      this.form.min = (this.form.time.slice(3, 5));
+      this.form.dateEnd = this.printDate();
+      this.form.timeEnd = this.printTime();
+      this.form.min = (this.form.timeEnd.slice(3, 5));
       this.form.minute = Number(this.form.min);
-      this.form.hor = (this.form.time.slice(0, 2));
+      this.form.hor = (this.form.timeEnd.slice(0, 2));
       this.form.hour = Number(this.form.hor);
       this.form.summinute = (this.form.hour*60)+(this.form.minute);
     },

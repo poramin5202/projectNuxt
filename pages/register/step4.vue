@@ -42,13 +42,23 @@
                     label="รายละเอียดอื่นๆหลังการจองคิว"
                     :value = " 
                     'จองคิวเสร็จสิ้นวันที่ : '+getTime.date+ 
-                    '\nจองคิวเสร็จสิ้นเวลา : '+getTime.time
-                    
+                    '\nจองคิวเสร็จสิ้นเวลา : '+getTime.time+
+                    '\n(ยกเลิก หรือ เปลี่ยนเวลา ได้ตามเงื่อนไขที่กำหนด) '
                       "
                 ></v-textarea>
            </v-col>
           </v-row>
         </v-container>
+        <div class="mb-0 mt-10">
+            <v-footer padless>
+    <v-col
+      class="text-center"
+      cols="12"
+    >
+      {{ new Date().getFullYear() }} — <strong>Nuxt+Vuetify</strong><h6>By.ECT_Barber Shop Booking System</h6>
+    </v-col>
+  </v-footer>
+        </div>
         </div>
  </template>
 

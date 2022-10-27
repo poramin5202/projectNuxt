@@ -41,6 +41,16 @@
 
           </v-row>
         </v-container>
+        <div class="mb-0 mt-10">
+            <v-footer padless>
+    <v-col
+      class="text-center"
+      cols="12"
+    >
+      {{ new Date().getFullYear() }} — <strong>Nuxt+Vuetify</strong><h6>By.ECT_Barber Shop Booking System</h6>
+    </v-col>
+  </v-footer>
+        </div>
         </div>
  </template>
  <script>

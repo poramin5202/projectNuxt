@@ -18,8 +18,8 @@ export const state = () => ({
     bt:false
  },
  time:{
-    date: '',
-    time: '',
+    dateEnd: '',
+    timeEnd: '',
     minute:'',
     min:'',
     hour:'',

@@ -50,13 +50,25 @@
 </v-col>
       <v-col class="pt-0 pb-0">
         <v-form >
-            <v-btn class="w100 my-btn mt-0 " width="100%" rounded color="primary" dark  @click="next">    Next </v-btn>
-      
+          
+            <v-btn class="w100 my-btn mt-0 " width="100%" rounded color="primary" dark  @click="next"> 
+           Next </v-btn>
+          
         </v-form>
       </v-col>
 
             </v-row>
         </v-container>
+        <div class="mb-0 mt-10">
+            <v-footer padless>
+    <v-col
+      class="text-center"
+      cols="12"
+    >
+      {{ new Date().getFullYear() }} — <strong>Nuxt+Vuetify</strong><h6>By.ECT_Barber Shop Booking System</h6>
+    </v-col>
+  </v-footer>
+        </div>
     <v-dialog 
     v-model="dialog" 
     max-width="290"
