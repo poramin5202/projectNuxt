@@ -1,6 +1,8 @@
 <template>
     <div>
+      รอสักครู่
               {{next()}}
+              
     </div>
                 </template>
 <script>
