@@ -55,6 +55,19 @@
  </template>
  <script>
  export default {
+  data() {
+        return{
+            form:{
+      dateEnd: '',
+      timeEnd: '',
+      minute:'',
+      min:'',
+      hour:'',
+      hor:'',
+      summinute:''
+     }
+   }
+  },
 computed: {
         getBt(){
            return this.$store.getters.getBt;
@@ -63,25 +76,37 @@ computed: {
            return this.$store.getters.getDatahair;
         }
     },
-    data(){
-        return {
-          
-        }
-  },
+    
   methods:{
     next() {
            
            if( this.$store.getters.getBt.bt == false){
                this.dialog=true
            }else{
-                       this.$router.push("/register/step4");
+
+           this.$router.push("/register/step4");
            }
   
                 },
     back() {
                this.$router.push("/register/step2");
-           }
+           },
+     printDate: function () {
+        return new Date().toLocaleDateString();
+      },
+      printTime: function () {
+        return new Date().toLocaleTimeString();
+      },
                 },
+    mounted: function () {
+      this.form.dateEnd = this.printDate();
+      this.form.timeEnd = this.printTime();
+      this.form.min = (this.form.timeEnd.slice(3, 5));
+      this.form.minute = Number(this.form.min);
+      this.form.hor = (this.form.timeEnd.slice(0, 2));
+      this.form.hour = Number(this.form.hor);
+      this.form.summinute = (this.form.hour*60)+(this.form.minute);
+    },
   }
 
 </script>
