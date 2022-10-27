@@ -1,11 +1,6 @@
 <template>
     <div>
-      รอสักครู่
-      5555 <br>
-            {{this.form.dateEnd}}
-            <br>
-            {{form.summinute}}
-              
+    {{next()}}
     </div>
                 </template>
 <script>
@@ -31,7 +26,7 @@ export default {
         return new Date().toLocaleTimeString();
       },
       next() {
-          if(this.form.summinute != '0'){
+          if(this.form.dateEnd != ''){
            this.$store.dispatch('setTime', this.form)
            this.$axios.patch(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/userLineliff/${this.$store.getters.getLine.userId}/data.json`, this.$store.getters.getLine)
            this.$axios.patch(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/userLineliff/${this.$store.getters.getLine.userId}/data.json`, this.$store.getters.getTime)
