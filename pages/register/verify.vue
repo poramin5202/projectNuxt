@@ -5,19 +5,7 @@
                 </template>
 <script>
 export default {
-    data() {
-        return{
-            form:{
-      dateEnd: '',
-      timeEnd: '',
-      minute:'',
-      min:'',
-      hour:'',
-      hor:'',
-      summinute:''
-     }
-   }
-  },
+
     methods: {
       
       printDate: function () {

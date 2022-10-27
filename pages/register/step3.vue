@@ -74,7 +74,7 @@ computed: {
            if( this.$store.getters.getBt.bt == false){
                this.dialog=true
            }else{
-                       this.$router.push("/register/verify");
+                       this.$router.push("/register/step4");
            }
   
                 },

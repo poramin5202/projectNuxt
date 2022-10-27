@@ -65,6 +65,19 @@
 
 <script>
 export default { 
+  data() {
+        return{
+            form:{
+      dateEnd: '',
+      timeEnd: '',
+      minute:'',
+      min:'',
+      hour:'',
+      hor:'',
+      summinute:''
+     }
+   }
+  },
     computed: {
         getLine(){
            return this.$store.getters.getLine;
@@ -74,6 +87,12 @@ export default {
         }
     },
     methods: {
+      printDate: function () {
+        return new Date().toLocaleDateString();
+      },
+      printTime: function () {
+        return new Date().toLocaleTimeString();
+      },
       sentdata(){
         this.$axios.patch(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/userLineliff/${this.$store.getters.getLine.userId}/data.json`, this.$store.getters.getLine)
            this.$axios.patch(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/userLineliff/${this.$store.getters.getLine.userId}/data.json`, this.$store.getters.getTime)
@@ -81,6 +100,15 @@ export default {
            
       }
 
+    },
+    mounted: function () {
+      this.form.dateEnd = this.printDate();
+      this.form.timeEnd = this.printTime();
+      this.form.min = (this.form.timeEnd.slice(3, 5));
+      this.form.minute = Number(this.form.min);
+      this.form.hor = (this.form.timeEnd.slice(0, 2));
+      this.form.hour = Number(this.form.hor);
+      this.form.summinute = (this.form.hour*60)+(this.form.minute);
     }
     
 };
