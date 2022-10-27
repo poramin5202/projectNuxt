@@ -19,5 +19,11 @@
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.12.3"
+  },
+  "name": "barber",
+  "description": "a really cool app",
+  "version": "1.0.0",
+  "engines": {
+    "node": "16.16.0"
   }
 }
