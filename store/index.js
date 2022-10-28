@@ -25,6 +25,24 @@ export const state = () => ({
     hour:'',
     hor:'',
     summinute:''
+ },
+ cancel:{
+    pictureUrl: '',
+    displayName: '',
+    userId:'',
+    dateEnd: '',
+    timeEnd: '',
+    minute:'',
+    min:'',
+    hour:'',
+    hor:'',
+    summinute:'',
+    name:'',
+    phoneNumber:'',
+    date:'',
+    perple:'',
+    time:'',
+    etc:''  
  }
 })
 //------------------------------------------
@@ -40,6 +58,9 @@ getLine(state){
  },
  getTime(state){
     return state.time
+ },
+ getCancel(state){
+    return state.cancel
  }
 }
 //------------------------------------------
@@ -67,6 +88,12 @@ export const mutations = {
             ...state.time,
             ...data
         }
+    },
+    SET_CANCEL(state,data){
+        state.cancel = {
+            ...state.cancel,
+            ...data
+        }
     }
 }
 //------------------------------------------
@@ -82,5 +109,8 @@ export const actions = {
     },
     setTime({ commit},data){
         commit('SET_TIME',data)
+    },
+    setCancel({ commit},data){
+        commit('SET_CANCEL',data)
     }
 }
