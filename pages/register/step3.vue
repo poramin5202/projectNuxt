@@ -27,6 +27,7 @@
                     label="สรุปรายละเลียด"
                     :value = " 'ชื่อในการจอง : '+getDatahair.name+ 
                       '\nเบอร์ติดต่อ     : '+getDatahair.phoneNumber+
+                      '\nอีเมลติดต่อ     : '+getDatahair.email+
                       '\nวันที่จองคิว     : '+getDatahair.date+
                       '\nช่างที่เลือก      : '+getDatahair.perple+
                       '\nเวลาจอง         : '+getDatahair.time+

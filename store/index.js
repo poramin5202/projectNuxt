@@ -12,7 +12,8 @@ export const state = () => ({
     date:'',
     perple:'',
     time:'',
-    etc:''  
+    etc:'' ,
+    email:'' 
  },
  bt:{
     bt:false
@@ -43,7 +44,10 @@ export const state = () => ({
     perple:'',
     time:'',
     etc:''  
- }
+ },
+ email:{
+    email:''
+ },
 })
 //------------------------------------------
 export const getters = {
@@ -61,6 +65,9 @@ getLine(state){
  },
  getCancel(state){
     return state.cancel
+ },
+ getEmail(state){
+    return state.email
  }
 }
 //------------------------------------------
@@ -94,6 +101,12 @@ export const mutations = {
             ...state.cancel,
             ...data
         }
+    },
+    SET_EMAIL(state,data){
+        state.email = {
+            ...state.email,
+            ...data
+        }
     }
 }
 //------------------------------------------
@@ -112,5 +125,8 @@ export const actions = {
     },
     setCancel({ commit},data){
         commit('SET_CANCEL',data)
+    },
+    setEmail({ commit},data){
+        commit('SET_EMAIL',data)
     }
 }

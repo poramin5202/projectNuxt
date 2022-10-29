@@ -34,6 +34,15 @@
                          label="phoneNumber"> 
                     </v-text-field>
 
+                    <v-text-field 
+                    class="mt-3"
+                         v-model="form.email"
+                         dense
+                         readonly
+                         prepend-icon="mdi-email"
+                         label="Email"> 
+                    </v-text-field>
+
                     <v-dialog
                         ref="dialog"
                         v-model="modal"
@@ -108,7 +117,7 @@
                             outlined
                             name="input-7-4"
                             label="รายละเอียดอื่นๆถึงช่าง"
-                            value="- มัดจำ100 - ไม่มายึดเงิน - อ่านและกดยอมรับเงื่อนไข  Gread A +  (รอเขียนเพิ่ม)" >
+                            value="" >
                                 </v-textarea>
                             </v-col>
                     <v-btn class="w100 my-btn mt-5 " width="100%" rounded color="primary" dark  @click="next">    Next </v-btn>
@@ -167,7 +176,8 @@ export default {
                 date:this.$store.getters.getDatahair.date,  
                 perple:this.$store.getters.getDatahair.perple,
                 time:this.$store.getters.getDatahair.time,
-                etc:this.$store.getters.getDatahair.etc ,    
+                etc:this.$store.getters.getDatahair.etc , 
+                email:'' ,   
             },
             modal: false,
             states: [ 'jom','att','poramin'],
@@ -241,10 +251,25 @@ export default {
             {
                 return true
             }else{ return false }
-        },
-        
+        }
       
  },
+        mounted(){
+            liff.init({
+                liffId: '1657521762-klyEy4wR'
+            }).then(() => {
+                if(liff.isLoggedIn()){
+                    liff.getProfile().then(profile => {
+                        const em = liff.getDecodedIDToken().email;
+                        console.log(em)
+                        this.form.email=em
+                                          
+                    })
+                }else{
+                    liff.login();
+                }
+            })
+        }, 
  
 }
 </script>

@@ -94,8 +94,10 @@ export default {
             }).then(() => {
                 if(liff.isLoggedIn()){
                     liff.getProfile().then(profile => {
+                        const email = liff.getDecodedIDToken().email;
+                        console.log(email)
                         this.$store.dispatch('setLine',profile);
-                    })
+                            })
                 }else{
                     liff.login();
                 }
@@ -108,7 +110,7 @@ export default {
     },
     data() {
         return {
-          
+           
             dialog:false,
             form: {
                 bt:false
