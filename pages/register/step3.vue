@@ -85,7 +85,7 @@ computed: {
                this.dialog=true
            }else{
           this.$store.dispatch('setTime', this.form)
-           this.$router.push("/register/step4");
+           this.$router.push("/register/verify");
            }
   
                 },
@@ -101,12 +101,22 @@ computed: {
                 },
     mounted: function () {
       this.form.dateEnd = this.printDate();
+     // console.log(this.printDate())
+      const d = Number((this.printDate().slice(0, 2)));
+      //console.log(d)
+      const m = Number((this.printDate().slice(3, 5)));
+     //console.log(m)
+      const y= Number((this.printDate().slice(6, 10)));
+     // console.log(y)
+
+
       this.form.timeEnd = this.printTime();
       this.form.min = (this.form.timeEnd.slice(3, 5));
       this.form.minute = Number(this.form.min);
       this.form.hor = (this.form.timeEnd.slice(0, 2));
       this.form.hour = Number(this.form.hor);
-      this.form.summinute = (this.form.hour*60)+(this.form.minute);
+
+      this.form.summinute = (this.form.hour*60)+(this.form.minute)+( (1440*d)+(44640*m)+(525600*y) );
     },
   }
 

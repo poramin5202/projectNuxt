@@ -4,7 +4,7 @@ export const state = () => ({
     pictureUrl: '',
     displayName: '',
     userId:'',
-    //email:null
+    
  },
  dataHair: {
     name:'',
@@ -73,6 +73,20 @@ export const state = () => ({
     t15:null,
     t16:null,
  },
+ stopday:{
+    Sun:null,
+    Mon:null,
+    Tue:null,
+    Wed:null,
+    Thu:null,
+    Fri:null,
+    Sat:null,
+    d1:null,d2:null,
+    d3:null,d4:null,
+    d5:null,d6:null,
+    d7:null,d8:null,
+
+ }
 })
 //------------------------------------------
 export const getters = {
@@ -96,6 +110,9 @@ getLine(state){
  },
  getCheck(state){
     return state.check
+ },
+ getStopday(state){
+    return state.stopday
  }
 }
 //------------------------------------------
@@ -141,6 +158,12 @@ export const mutations = {
             ...state.check,
             ...data
         }
+    } ,
+    SET_STOPDAY(state,data){
+        state.stopday = {
+            ...state.stopday,
+            ...data
+        }
     }
 }
 //------------------------------------------
@@ -165,5 +188,8 @@ export const actions = {
     },
     setCheck({ commit},data){
         commit('SET_CHECK',data)
+    },
+    setStopday({ commit},data){
+        commit('SET_STOPDAY',data)
     }
 }

@@ -79,7 +79,7 @@ export default {
         this.$axios.patch(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/userLineliff/${this.$store.getters.getLine.userId}.json`, this.$store.getters.getLine)
            this.$axios.patch(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/userLineliff/${this.$store.getters.getLine.userId}.json`, this.$store.getters.getTime)
            this.$axios.patch(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/userLineliff/${this.$store.getters.getLine.userId}.json`, this.$store.getters.getDatahair)
-           
+
           // this.$axios.patch(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/Timework/${this.$store.getters.getDatahair.name}.json`, this.$store.getters.getDatahair.time)
          //  this.$axios.patch(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/Timework/${this.$store.getters.getDatahair.name}.json`, this.$store.getters.getDatahair.date)
           // this.$axios.patch(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/Timework/${this.$store.getters.getDatahair.name}.json`, this.$store.getters.getDatahair.perple)

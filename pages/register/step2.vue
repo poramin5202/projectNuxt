@@ -167,6 +167,9 @@ export default {
         getDatahair(){
            return this.$store.getters.getHair;
         },
+        getStopday(){
+           return this.$store.getters.getStopday;
+        },
        /* getCheck(){
            return this.$store.getters.getCheck;
         }*/
@@ -196,22 +199,19 @@ export default {
             this.$store.getters.getCheck.b10,
         ],
             time: [ 
-                '10.00','10.30','11.00','11.30','12.00','12.30',
-            '13.00','13.30','14.00','14.30','15.00','15.30','16.00','16.30',
+            this.$store.getters.getCheck.t1,this.$store.getters.getCheck.t2,
+            this.$store.getters.getCheck.t3,this.$store.getters.getCheck.t4,
+            this.$store.getters.getCheck.t5,this.$store.getters.getCheck.t6,
+            this.$store.getters.getCheck.t7,this.$store.getters.getCheck.t8,
+            this.$store.getters.getCheck.t9,this.$store.getters.getCheck.t10,
+            this.$store.getters.getCheck.t11,this.$store.getters.getCheck.t12,
+            this.$store.getters.getCheck.t13,this.$store.getters.getCheck.t14,
+            this.$store.getters.getCheck.t15,this.$store.getters.getCheck.t16,
         ],
             nameRules:[ value => this.nameValidator(value) ],
             phoneRules:[value => this.phoneValidator(value)],
             dialog:false,
             
-            stopday:{
-                    Sun:'Sun',
-                    Mon:'Mon',
-                    Tue:'Tue',
-                    Wed:'Wed',
-                    Thu:'Thu',
-                    Fri:'Fri',
-                    Sat:'Sat',
-            },
                  }
     },
     methods: {
@@ -255,13 +255,22 @@ export default {
               },
         //allowedDates: val => { if( (  ( new Date(val).toString().substring(0,3)) != "Sun") && ( new Date(val).toString().substring(0,3) != "Sat" )) { return true } } 
         allowedDates(val) {
-            if( (   new Date(val).toString().substring(0,3) != this.stopday.Sun) 
-            && ( new Date(val).toString().substring(0,3) != this.stopday.Sun )
-            && ( new Date(val).toString().substring(0,3) != this.stopday.Sun )
-            && ( new Date(val).toString().substring(0,3) != this.stopday.Sun )
-            && ( new Date(val).toString().substring(0,3) != this.stopday.Sun )
-            && ( new Date(val).toString().substring(0,3) != this.stopday.Sun )
-            && ( new Date(val).toString().substring(0,3) != this.stopday.Sun )
+            //console.log(new Date(val).toString().substring(8,11));
+            if( (   new Date(val).toString().substring(0,3) != this.$store.getters.getStopday.Sat) 
+            && ( new Date(val).toString().substring(0,3) != this.$store.getters.getStopday.Sun )
+            && ( new Date(val).toString().substring(0,3) != this.$store.getters.getStopday.Mon )
+            && ( new Date(val).toString().substring(0,3) != this.$store.getters.getStopday.Tue )
+            && ( new Date(val).toString().substring(0,3) != this.$store.getters.getStopday.Wed )
+            && ( new Date(val).toString().substring(0,3) != this.$store.getters.getStopday.Thu )
+            && ( new Date(val).toString().substring(0,3) != this.$store.getters.getStopday.Fri )
+            && ( new Date(val).toString().substring(8,11) != this.$store.getters.getStopday.d1 )
+            && ( new Date(val).toString().substring(8,11) != this.$store.getters.getStopday.d2 )
+            && ( new Date(val).toString().substring(8,11) != this.$store.getters.getStopday.d3 )
+            && ( new Date(val).toString().substring(8,11) != this.$store.getters.getStopday.d4 )
+            && ( new Date(val).toString().substring(8,11) != this.$store.getters.getStopday.d5 )
+            && ( new Date(val).toString().substring(8,11) != this.$store.getters.getStopday.d6 )
+            && ( new Date(val).toString().substring(8,11) != this.$store.getters.getStopday.d7 )
+            && ( new Date(val).toString().substring(8,11) != this.$store.getters.getStopday.d8 )
             )
             {
                 return true
@@ -276,7 +285,7 @@ export default {
                 if(liff.isLoggedIn()){
                     liff.getProfile().then(profile => {
                         const em = liff.getDecodedIDToken().email;
-                        console.log(em)
+                     //   console.log(em)
                         this.form.email=em
                                           
                     })
