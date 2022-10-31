@@ -166,7 +166,10 @@ export default {
         },
         getDatahair(){
            return this.$store.getters.getHair;
-        }
+        },
+       /* getCheck(){
+           return this.$store.getters.getCheck;
+        }*/
     },
     data(){
         return {
@@ -177,12 +180,25 @@ export default {
                 perple:this.$store.getters.getDatahair.perple,
                 time:this.$store.getters.getDatahair.time,
                 etc:this.$store.getters.getDatahair.etc , 
-                email:'' ,   
+                email:' - ' ,   
             },
             modal: false,
-            states: [ 'jom','att','poramin'],
-            time: [ '10.00','10.30','11.00','11.30','12.00','12.30',
-            '13.00','13.30','14.00','14.30','15.00','15.30','16.00','16.30',],
+            states: [
+            this.$store.getters.getCheck.b1,
+            this.$store.getters.getCheck.b2,
+            this.$store.getters.getCheck.b3,
+            this.$store.getters.getCheck.b4,
+            this.$store.getters.getCheck.b5,
+            this.$store.getters.getCheck.b6,
+            this.$store.getters.getCheck.b7,
+            this.$store.getters.getCheck.b8,
+            this.$store.getters.getCheck.b9,
+            this.$store.getters.getCheck.b10,
+        ],
+            time: [ 
+                '10.00','10.30','11.00','11.30','12.00','12.30',
+            '13.00','13.30','14.00','14.30','15.00','15.30','16.00','16.30',
+        ],
             nameRules:[ value => this.nameValidator(value) ],
             phoneRules:[value => this.phoneValidator(value)],
             dialog:false,
@@ -247,7 +263,6 @@ export default {
             && ( new Date(val).toString().substring(0,3) != this.stopday.Sun )
             && ( new Date(val).toString().substring(0,3) != this.stopday.Sun )
             )
-            
             {
                 return true
             }else{ return false }

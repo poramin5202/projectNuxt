@@ -45,8 +45,33 @@ export const state = () => ({
     time:'',
     etc:''  
  },
- email:{
-    email:''
+ check:{
+    b1:null,
+    b2:null,
+    b3:null,
+    b4:null,
+    b5:null,
+    b6:null,
+    b7:null,
+    b8:null,
+    b9:null,
+    b10:null,
+    t1:null,
+    t2:null,
+    t3:null,
+    t4:null,
+    t5:null,
+    t6:null,
+    t7:null,
+    t8:null,
+    t9:null,
+    t10:null,
+    t11:null,
+    t12:null,
+    t13:null,
+    t14:null,
+    t15:null,
+    t16:null,
  },
 })
 //------------------------------------------
@@ -68,6 +93,9 @@ getLine(state){
  },
  getEmail(state){
     return state.email
+ },
+ getCheck(state){
+    return state.check
  }
 }
 //------------------------------------------
@@ -107,6 +135,12 @@ export const mutations = {
             ...state.email,
             ...data
         }
+    },
+    SET_CHECK(state,data){
+        state.check = {
+            ...state.check,
+            ...data
+        }
     }
 }
 //------------------------------------------
@@ -128,5 +162,8 @@ export const actions = {
     },
     setEmail({ commit},data){
         commit('SET_EMAIL',data)
+    },
+    setCheck({ commit},data){
+        commit('SET_CHECK',data)
     }
 }

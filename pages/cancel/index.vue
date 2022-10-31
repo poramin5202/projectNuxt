@@ -79,7 +79,7 @@ export default {
                 if(liff.isLoggedIn()){
                     liff.getProfile().then(profile => {
                         this.$store.dispatch('setLine',profile);
-                        this.$axios.get(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/userLineliff/${this.$store.getters.getLine.userId}/data.json`).then((res) => {
+                        this.$axios.get(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/userLineliff/${this.$store.getters.getLine.userId}.json`).then((res) => {
                         this.$store.dispatch('setCancel',res.data);
                         });
                     })

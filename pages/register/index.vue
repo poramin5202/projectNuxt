@@ -95,9 +95,14 @@ export default {
                 if(liff.isLoggedIn()){
                     liff.getProfile().then(profile => {
                         const email = liff.getDecodedIDToken().email;
-                        console.log(email)
                         this.$store.dispatch('setLine',profile);
-                            })
+                        this.$axios.get(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/BarberName.json`).then((res) => {
+                        this.$store.dispatch('setCheck',res.data);}    
+                    )
+                    this.$axios.get(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/BarberTimeOn.json`).then((res) => {
+                        this.$store.dispatch('setCheck',res.data);}
+                    )
+                })
                 }else{
                     liff.login();
                 }
