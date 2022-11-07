@@ -105,6 +105,7 @@ export default {
                     this.$axios.get(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/Stopday.json`).then((res) => {
                         this.$store.dispatch('setStopday',res.data);}
                     )
+                    
                 })
                 }else{
                     liff.login();

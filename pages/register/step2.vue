@@ -108,6 +108,8 @@
                                 prepend-icon="mdi-clock-time-five-outline"
                                 single-line
                                 class="pt-0 pl-0 mt-0"
+                                :rules="nameRules"
+                               
                             ></v-select>
                             </v-col>
                             <v-col cols="12"  md="6" class="pt-0 pb-0">
@@ -120,6 +122,7 @@
                             value="" >
                                 </v-textarea>
                             </v-col>
+                            <v-btn class="w100 my-btn mt-5 center " width="50%" rounded color="primary" dark  @click="checkTime"> Check </v-btn>
                     <v-btn class="w100 my-btn mt-5 " width="100%" rounded color="primary" dark  @click="next">    Next </v-btn>
                     </v-form>
                 </v-col>
@@ -159,6 +162,7 @@ import { get } from 'http';
 const REGEX_PHONE = /^[0]([0-9]{9})*$/
 const REGEX_NUMBER = /^[0-9]*$/
 let day = ['Sun'];
+
 export default {
     computed: {
         getBt(){
@@ -176,6 +180,8 @@ export default {
     },
     data(){
         return {
+            text:'',
+            checkT:true,
           form: {
                 name:this.$store.getters.getDatahair.name,
                 phoneNumber:this.$store.getters.getDatahair.phoneNumber,
@@ -275,6 +281,19 @@ export default {
             {
                 return true
             }else{ return false }
+        },
+        checkTime(){
+
+            this.$axios.get(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/Table/${this.form.perple}/${this.form.date}/${this.form.time}.json`).then((res) => {    
+                       this.text=res.data
+                console.log(res.data.name)
+                console.log(res.data.name)
+                        if(res.data.name != null ){
+                            console.log(res.data.name)
+                        this.checkT=false ;
+                        console.log("ซ้ำk5"); }
+                    }); 
+                         
         }
       
  },
@@ -297,4 +316,6 @@ export default {
  
 }
 </script>
+
+
 
