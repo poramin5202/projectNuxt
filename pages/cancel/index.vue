@@ -48,6 +48,9 @@
                     class="ml-5"
             ></v-checkbox>
                         </v-col>
+                        <v-col cols="12">
+                            <v-btn class="w100 my-btn mt-5 " width="100%" rounded color="danger" dark   readonly>    Cancel </v-btn>
+                        </v-col>
             </v-row>
 
        

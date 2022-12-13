@@ -65,7 +65,7 @@
       min:'',
       hour:'',
       hor:'',
-      summinute:''
+      summinute:0,
      }
    }
   },
@@ -102,11 +102,11 @@ computed: {
     mounted: function () {
       this.form.dateEnd = this.printDate();
      // console.log(this.printDate())
-      const d = Number((this.printDate().slice(0, 2)));
+      const d = Number((this.printDate().slice(0, 1)));  //รอแก้ไข  01 35 610
       //console.log(d)
-      const m = Number((this.printDate().slice(3, 5)));
+      const m = Number((this.printDate().slice(2, 4)));
      //console.log(m)
-      const y= Number((this.printDate().slice(6, 10)));
+      const y= Number((this.printDate().slice(5, 9)));
      // console.log(y)
 
 

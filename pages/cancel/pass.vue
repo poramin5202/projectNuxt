@@ -50,7 +50,9 @@
                     class="ml-5"
             ></v-checkbox>
                 </v-col>
-
+                <v-col cols="12">
+                            <v-btn class="w100 my-btn mt-5 " width="100%" rounded color="danger" dark  @click="next">    Cancel </v-btn>
+                        </v-col>
                 {{checknot()}}
 
             </v-row>
@@ -126,7 +128,7 @@ export default {
     mounted: function () {
       this.form.dateEnd = this.printDate();
      // console.log(this.printDate())
-      const d = Number((this.printDate().slice(0, 2)));
+      const d = Number((this.printDate().slice(0, 2)));  //รอแก้
       //console.log(d)
       const m = Number((this.printDate().slice(3, 5)));
      //console.log(m)

@@ -122,7 +122,7 @@
                             value="" >
                                 </v-textarea>
                             </v-col>
-                            <v-btn class="w100 my-btn mt-5 center " width="50%" rounded color="primary" dark  @click="checkTime"> Check </v-btn>
+                        <!--     <v-btn class="w100 my-btn mt-5 center " width="50%" rounded color="primary" dark  @click="checkTime"> Check </v-btn> -->
                     <v-btn class="w100 my-btn mt-5 " width="100%" rounded color="primary" dark  @click="next">    Next </v-btn>
                     </v-form>
                 </v-col>
