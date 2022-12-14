@@ -51,7 +51,7 @@
             ></v-checkbox>
                 </v-col>
                 <v-col cols="12">
-                            <v-btn class="w100 my-btn mt-5 " width="100%" rounded color="danger" dark  @click="next">    Cancel </v-btn>
+                            <v-btn class="w100 my-btn mt-5 " width="100%" rounded color="#FFA500"  @click="next">    Cancel Booking </v-btn>
                         </v-col>
                 {{checknot()}}
 
