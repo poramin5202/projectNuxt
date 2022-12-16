@@ -31,30 +31,29 @@
                     {{ getLine.displayName}}
                 </v-col>
                 <v-col cols="12">
-             <v-checkbox 
-                    label="ทำการจองคิวเรียบร้อย"       
+             <v-checkbox
+                    v-model="ex4"
+                    label="ทำการจองคิวเรียบร้อย"
+                    color="success"
                     value="success"
                     hide-details
                     readonly
-                    indeterminate
                     class="ml-5"
             ></v-checkbox>
             <v-checkbox
+               indeterminate
                     label="อยู่ในช่วงที่สามารถยกเลิก"
+                    color="success"
                     value="success"
                     hide-details
                     readonly
-                    indeterminate
                     class="ml-5"
             ></v-checkbox>
-                        </v-col>
-                        <v-col cols="12">
-                            <v-btn class="w100 my-btn mt-5 " width="100%" rounded color="info" @click="next"  readonly>    Go to booking </v-btn>
+                </v-col>
+                <v-col cols="12">
+                            <v-btn class="w100 my-btn mt-5 " width="100%" rounded color="#555555" readonly >    Cancel </v-btn>
                         </v-col>
             </v-row>
-
-       
-
         </v-container>
         <div class="mb-0 mt-10">
             <v-footer padless>
@@ -66,31 +65,11 @@
     </v-col>
   </v-footer>
         </div>
-
-        {{check()}}
-        
     </div>
 </template>
 
 <script>
-
 export default {
-    mounted(){
-            liff.init({
-                liffId: '1657521762-vLzxz6Ee'
-            }).then(() => {
-                if(liff.isLoggedIn()){
-                    liff.getProfile().then(profile => {
-                        this.$store.dispatch('setLine',profile);
-                        this.$axios.get(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/userLineliff/${this.$store.getters.getLine.userId}.json`).then((res) => {
-                        this.$store.dispatch('setCancel',res.data);
-                        });
-                    })
-                }else{
-                    liff.login();
-                }
-            })
-        }, 
     computed: {
         getLine(){
            return this.$store.getters.getLine;
@@ -100,17 +79,26 @@ export default {
         }
 
     },
-    
-    methods:{
-        check(){
-            if(this.$store.getters.getCancel.summinute != ''){
-                this.$router.push("/cancel/pass");
-            }
-        },
-        next() {
-                this.$router.push("./register");
-            }
-    },
-
+    mounted(){
+            liff.init({
+                liffId: '1657521762-vLzxz6Ee'
+            }).then(() => {
+                if(liff.isLoggedIn()){
+                    liff.getProfile().then(profile => {
+                        this.$store.dispatch('setLine',profile);
+                        this.$axios.get(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/userLineliff/${this.$store.getters.getLine.userId}/data.json`).then((res) => {
+                        this.$store.dispatch('setCancel',res.data);
+                        });
+                    })
+                }else{
+                    liff.login();
+                }
+            })
+        }, 
+        data () {
+      return {
+        ex4: ['success'],
+      }
     }
+}
 </script>

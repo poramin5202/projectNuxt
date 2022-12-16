@@ -31,30 +31,31 @@
                     {{ getLine.displayName}}
                 </v-col>
                 <v-col cols="12">
-             <v-checkbox 
-                    label="ทำการจองคิวเรียบร้อย"       
+             <v-checkbox
+                    v-model="ex4"
+                    label="ทำการจองคิวเรียบร้อย"
+                    color="success"
                     value="success"
                     hide-details
                     readonly
-                    indeterminate
                     class="ml-5"
             ></v-checkbox>
             <v-checkbox
+                    v-model="ex4"
                     label="อยู่ในช่วงที่สามารถยกเลิก"
+                    color="success"
                     value="success"
                     hide-details
                     readonly
-                    indeterminate
                     class="ml-5"
             ></v-checkbox>
+                </v-col>
+                <v-col cols="12">
+                            <v-btn class="w100 my-btn mt-5 " width="100%" rounded color="#FFA500"  @click="next">    Cancel Booking </v-btn>
                         </v-col>
-                        <v-col cols="12">
-                            <v-btn class="w100 my-btn mt-5 " width="100%" rounded color="info" @click="next"  readonly>    Go to booking </v-btn>
-                        </v-col>
+                {{checknot()}}
+
             </v-row>
-
-       
-
         </v-container>
         <div class="mb-0 mt-10">
             <v-footer padless>
@@ -66,9 +67,6 @@
     </v-col>
   </v-footer>
         </div>
-
-        {{check()}}
-        
     </div>
 </template>
 
@@ -82,7 +80,7 @@ export default {
                 if(liff.isLoggedIn()){
                     liff.getProfile().then(profile => {
                         this.$store.dispatch('setLine',profile);
-                        this.$axios.get(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/userLineliff/${this.$store.getters.getLine.userId}.json`).then((res) => {
+                        this.$axios.get(`https://projectbarber64-9435e-default-rtdb.asia-southeast1.firebasedatabase.app/userLineliff/${this.$store.getters.getLine.userId}/data.json`).then((res) => {
                         this.$store.dispatch('setCancel',res.data);
                         });
                     })
@@ -91,7 +89,7 @@ export default {
                 }
             })
         }, 
-    computed: {
+        computed: {
         getLine(){
            return this.$store.getters.getLine;
         },
@@ -100,16 +98,49 @@ export default {
         }
 
     },
-    
+    data () {
+      return {
+        ex4: ['success'],
+        form:{
+      dateEnd: '',
+      timeEnd: '',
+      minute:'',
+      min:'',
+      hour:'',
+      hor:'',
+      summinute:''
+     }
+      }
+    },
     methods:{
-        check(){
-            if(this.$store.getters.getCancel.summinute != ''){
-                this.$router.push("/cancel/pass");
+        checknot(){
+             if( ((this.form.summinute) - (this.$store.getters.getCancel.summinute)) >= 60){
+                this.$router.push("/cancel/notpass");
             }
         },
-        next() {
-                this.$router.push("./register");
-            }
+        printDate: function () {
+        return new Date().toLocaleDateString();
+      },
+      printTime: function () {
+        return new Date().toLocaleTimeString();
+      },
+    },
+    mounted: function () {
+      this.form.dateEnd = this.printDate();
+     // console.log(this.printDate())
+      const d = Number((this.printDate().slice(0, 2)));  //รอแก้
+      //console.log(d)
+      const m = Number((this.printDate().slice(3, 5)));
+     //console.log(m)
+      const y= Number((this.printDate().slice(6, 10)));
+     // console.log(y)
+
+      this.form.timeEnd = this.printTime();
+      this.form.min = (this.form.timeEnd.slice(3, 5));
+      this.form.minute = Number(this.form.min);
+      this.form.hor = (this.form.timeEnd.slice(0, 2));
+      this.form.hour = Number(this.form.hor);
+      this.form.summinute = (this.form.hour*60)+(this.form.minute)+( (1440*d)+(44640*m)+(525600*y) );
     },
 
     }
